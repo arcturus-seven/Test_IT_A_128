@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+       
+       input{
+        width: 65%;
+        height: 25px;
+       }
+       button{
+        background-color:#28a745;
+        border: 0px;
+        border-radius: 5px;
+        height: 30px;
+        width: 50px;
+        color: white;
+        padding: auto;
+       }
+    </style>
+</head>
+<body>
+    <h2><b>Login</b></h2>
+    <form onsubmit="return login()">
+    <div class="username">
+        <input type="text" placeholder="Username" id="username"><br><br>
+    </div>
+    <div class="password">
+        <input type="password" placeholder="Password" id="password"><br><br>
+    </div>
+   <div class="button">
+    <button type="submit">Login</button>   
+   </div>
+    </form>
+   <script>
+    function login(){
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        if(username && password){
+            window.location.href="Dashboard.html";
+        }
+        else{
+            alert("Invalid Login Details");
+        }
+        return false;
+
+    }
+   </script>
+    
+</body>
+</html>

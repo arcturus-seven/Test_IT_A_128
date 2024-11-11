@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+            color: rgb(14, 234, 14);
+        }
+        button{
+        background-color:rgb(14, 234, 14); 
+        border: 0px;
+        border-radius: 5px;
+        height: 35px;
+        width: 20%;
+        color: white; 
+        }
+        .logout{
+        background-color:#dc3545;
+        border: 0px;
+        border-radius: 5px;
+        height: 30px;
+        width: 50px;
+        color: white;
+        padding: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <h1>Welcome Rachit</h1>
+
+    <button onclick="fetchGitHubUsers()">Fetch Top 10 GitHub Users</button>
+    <ul class="user-list" id="userList"></ul>
+    <script>
+        async function fetchGitHubUsers(){
+              try{
+                const response = await fetch('https://api.github.com/users');
+                const users = await response.json();
+
+                const userList = document.getElementById('userList');
+                userList.innerHTML='';
+
+                users.slice(0,10).forEach(user => {
+                    const listItem = document.getElementById('li');
+                    listItem.classList.add('user-item');
+                    userList.appendChild(listItem);
+                });
+
+
+              }
+              catch(error){
+                console.error("Error Fetching GitHub users");
+              };
+            }
+            
+    </script>
+
+    <button class="logout">Logout</button>
+</body>
+</html>
